@@ -1,6 +1,6 @@
 export interface GameName {
-  language: "KO" | "EN" | "JP";
-  name: string;
+  language: "KO" | "EN" | "JA";
+  value: string;
 }
 export interface Game {
   id: string;

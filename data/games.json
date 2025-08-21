@@ -1,0 +1,29 @@
+[
+  {
+    "id": "UNCHARTED4",
+    "category": "ADVENTURE",
+    "name": [
+      { "language": "EN", "value": "Uncharted 4: A Thief's End" },
+      { "language": "KO", "value": "언차티드 4: 해적왕과 최후의 보물" },
+      { "language": "JA", "value": "アンチャーテッド 海賊王と最後の秘宝" }
+    ]
+  },
+  {
+    "id": "WITCHER3",
+    "category": "RPG",
+    "name": [
+      { "language": "EN", "value": "The Witcher 3: Wild Hunt" },
+      { "language": "KO", "value": "더 위처 3: 와일드 헌트" },
+      { "language": "JA", "value": "ウィッチャー3 ワイルドハント" }
+    ]
+  },
+  {
+    "id": "OVERWATCH2",
+    "category": "SHOOTER",
+    "name": [
+      { "language": "EN", "value": "Overwatch 2" },
+      { "language": "KO", "value": "오버워치 2" },
+      { "language": "JA", "value": "オーバーウォッチ 2" }
+    ]
+  }
+]
