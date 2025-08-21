@@ -11,7 +11,32 @@ export interface Game {
     | "STRATEGY"
     | "PUZZLE"
     | "SPORTS"
+    | "SHOOTER"
     | "RACING"
     | "FIGHTING";
   name: GameName[];
+}
+export interface GameCreateRequest {
+  id: string;
+  category: Game["category"];
+  name: GameName[];
+}
+
+export interface GameUpdateRequest {
+  category?: Game["category"];
+  name?: GameName[];
+}
+
+export interface GameListResponse {
+  games: Game[];
+  total: number;
+  page: number;
+  limit: number;
+}
+
+export interface GameFilters {
+  search?: string;
+  category?: string;
+  page?: number;
+  limit?: number;
 }

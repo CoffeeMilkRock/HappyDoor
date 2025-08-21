@@ -28,9 +28,10 @@
               Search Games
             </label>
             <InputText
+              v-model="searchQuery"
               placeholder="Search by name or ID"
               class="w-full"
-              @input=""
+              @input="handleSearchInput"
             />
           </div>
           <div class="flex-1">
@@ -38,13 +39,14 @@
               Filter by Genre
             </label>
             <Dropdown
+              v-model="selectedCategory"
               :options="categoriesOptions"
               option-label="label"
               option-value="value"
               placeholder="Select Category"
               show-clear
               class="w-full"
-              @change=""
+              @change="loadGames"
             />
           </div>
         </div>
@@ -61,7 +63,7 @@
           data-key="id"
           :meta-key-selection="false"
           class="p-datatable-sm"
-          :row="pageSize"
+          :rows="pageSize"
           :total-records="totalRecords"
           lazy
           paginator
@@ -89,7 +91,7 @@
             <template #body="{ data }">
               <NuxtLink
                 :to="`/games/${data.id}`"
-                class="text-blue-600 hover:underline"
+                class="text-white text-sm decoration-none"
               >
                 {{ data.id }}
               </NuxtLink>
@@ -103,12 +105,9 @@
                   :key="nameEntry.language"
                   class="flex items-center gap-2"
                 >
-                  <Tag
-                    :value="nameEntry.language"
-                    :severity="getLanguageTagSeverity(nameEntry.language)"
-                    class="text-xs"
-                  />
-                  <span class="text-sm">{{ nameEntry.value }}</span>
+                  <span class="text-md font-600">{{
+                    nameEntry.language == currentLanguage ? nameEntry.value : ""
+                  }}</span>
                 </div>
               </div>
             </template>
@@ -151,6 +150,7 @@
   </div>
 </template>
 <script setup lang="ts">
+import { row } from "@primeuix/themes/aura/datatable";
 import { ref, computed, onMounted } from "vue";
 import type { Game } from "~/types/game";
 
@@ -165,7 +165,7 @@ const selectedCategory = ref("");
 const currentPage = ref(1);
 const pageSize = ref(10);
 const totalRecords = ref(0);
-
+const currentLanguage = ref("KO");
 const hasSelectedGames = computed(() => selectedGames.value.length > 0);
 const deleteButtonLabel = computed(() => {
   return hasSelectedGames.value
@@ -180,6 +180,7 @@ const categoriesOptions = [
   { label: "Puzzle", value: "PUZZLE" },
   { label: "RPG", value: "RPG" },
   { label: "Racing", value: "RACING" },
+  { label: "Shooter", value: "SHOOTER" },
   { label: "Sports", value: "SPORTS" },
   { label: "Strategy", value: "STRATEGY" },
 ];
@@ -352,19 +353,6 @@ const bulkDeleteGames = async () => {
     });
   } finally {
     bulkDeleting.value = false;
-  }
-};
-
-const getLanguageTagSeverity = (language: string) => {
-  switch (language) {
-    case "EN":
-      return "info";
-    case "KO":
-      return "success";
-    case "JA":
-      return "warning";
-    default:
-      return "secondary";
   }
 };
 
