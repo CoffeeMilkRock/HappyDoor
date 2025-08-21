@@ -23,11 +23,15 @@
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
-    "@primevue/nuxt-module": "^4.3.7",
-    "@unocss/reset": "^66.4.2",
     "@iconify-json/prime": "^1.2.0",
+    "@primevue/nuxt-module": "^4.3.7",
+    "@unocss/preset-icons": "^66.4.2",
+    "@unocss/reset": "^66.4.2",
     "eslint": "^9.33.0",
     "typescript": "^5.9.2",
     "unocss": "^66.4.2"
+  },
+  "overrides": {
+    "pathe": "^2.0.0"
   }
 }
