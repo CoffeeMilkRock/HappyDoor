@@ -38,7 +38,7 @@
           </div>
           <div class="flex-1">
             <label class="block text-sm font-large text-white-700 mb-2">
-              Filter by Genre
+              Filter by Category
             </label>
             <Dropdown
               v-model="selectedCategory"
