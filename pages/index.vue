@@ -146,20 +146,13 @@
 
           <Column header="Actions" :exportable="false" style="min-width: 8rem">
             <template #body="{ data }">
-              <div class="flex gap-2">
+              <div class="flex gap-2 ml-5">
                 <Button
                   icon="pi pi-pencil"
                   severity="info"
                   size="small"
                   @click="() => editGame(data)"
                   :title="`Edit ${data.name[0]?.value || data.id}`"
-                />
-                <Button
-                  icon="pi pi-trash"
-                  severity="danger"
-                  size="small"
-                  @click="() => confirmDelete(data)"
-                  :title="`Delete ${data.name[0]?.value || data.id}`"
                 />
               </div>
             </template>
@@ -279,53 +272,6 @@ const onSort = () => {
 
 const editGame = (game: Game) => {
   navigateTo(`/register?id=${game.id}`);
-};
-
-const confirmDelete = (game: Game) => {
-  confirm.require({
-    message: `Are you sure you want to delete "${
-      game.name[0]?.value || game.id
-    }"?`,
-    header: "Delete Confirmation",
-    icon: "pi pi-exclamation-triangle",
-    rejectProps: {
-      label: "Cancel",
-      severity: "secondary",
-      outlined: true,
-    },
-    acceptProps: {
-      label: "Delete",
-      severity: "danger",
-    },
-    accept: () => deleteGame(game.id),
-  });
-};
-
-const deleteGame = async (gameId: string) => {
-  try {
-    const response = await fetch(`/api/games/${gameId}`, { method: "DELETE" });
-
-    if (!response.ok) {
-      throw new Error("Failed to delete game");
-    }
-
-    toast.add({
-      severity: "success",
-      summary: "Success",
-      detail: "Game deleted successfully",
-      life: 3000,
-    });
-    await loadGames();
-    selectedGames.value = selectedGames.value.filter((g) => g.id !== gameId);
-  } catch (error) {
-    console.error("Error deleting game:", error);
-    toast.add({
-      severity: "error",
-      summary: "Error",
-      detail: "Failed to delete game",
-      life: 3000,
-    });
-  }
 };
 
 const confirmBulkDelete = () => {

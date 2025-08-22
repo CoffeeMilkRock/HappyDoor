@@ -10,6 +10,10 @@
       {
         "language": "KO",
         "value": "언차티드 4: 해적왕과 최후의 보물"
+      },
+      {
+        "language": "JA",
+        "value": "アンチャーテッド 海賊王と最後の秘宝"
       }
     ]
   },
@@ -46,6 +50,24 @@
       {
         "language": "JA",
         "value": "エピックセブン"
+      }
+    ]
+  },
+  {
+    "id": "CROSSFIRE",
+    "category": "FPS",
+    "name": [
+      {
+        "language": "EN",
+        "value": "Crossfire"
+      },
+      {
+        "language": "KO",
+        "value": "크로스파이어"
+      },
+      {
+        "language": "JA",
+        "value": "クロスファイア"
       }
     ]
   },

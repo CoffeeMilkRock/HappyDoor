@@ -13,7 +13,7 @@ export interface Game {
     | "RHYTHM"
     | "RPG"
     | "RACING"
-    | "ROUGELITE"
+    | "ROGUELITE"
     | "SIMULATION"
     | "STRATEGY"
     | "SPORTS";
