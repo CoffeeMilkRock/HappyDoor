@@ -97,55 +97,55 @@
                   class="border border-gray-200"
                 >
                   <template #content>
-                    <div class="flex items-start gap-4">
-                      <div class="flex-shrink-0 pt-2">
+                    <div
+                      class="flex items-start items-center align-middle justify-center gap-4"
+                    >
+                      <div class="flex-1">
                         <Tag
+                          class="rounded-b-none pb-[-5px]"
                           :value="getLanguageLabel(nameEntry.language)"
                           :severity="getLanguageTagSeverity(nameEntry.language)"
                         />
-                      </div>
 
-                      <div class="flex-1">
-                        <InputText
-                          v-model="nameEntry.value"
-                          :placeholder="`Enter game name in ${getLanguageLabel(
-                            nameEntry.language
-                          )}`"
-                          class="w-full"
-                          :class="{ 'p-invalid': errors[`name_${index}`] }"
-                          @blur="validateNameEntry(index)"
-                        />
-                        <small v-if="errors[`name_${index}`]" class="p-error">
-                          {{ errors[`name_${index}`] }}
-                        </small>
-                      </div>
+                        <div class="flex items-center gap-2">
+                          <InputText
+                            v-model="nameEntry.value"
+                            :placeholder="`Enter game name in ${getLanguageLabel(
+                              nameEntry.language
+                            )}`"
+                            class="w-full rounded-tl-none"
+                            :class="{ 'p-invalid': errors[`name_${index}`] }"
+                            @blur="validateNameEntry(index)"
+                          />
+                          <small v-if="errors[`name_${index}`]" class="p-error">
+                            {{ errors[`name_${index}`] }}
+                          </small>
+                          <Button
+                            v-show="!nameEntry.isDefault"
+                            icon="pi pi-star"
+                            severity="warning"
+                            outlined
+                            size="small"
+                            @click="setDefaultLanguage(index)"
+                            title="Set as Default"
+                          />
+                          <Tag
+                            v-show="nameEntry.isDefault"
+                            value="Default"
+                            severity="warning"
+                            class="text-xs"
+                          />
 
-                      <div class="flex items-center gap-2 pt-2">
-                        <Button
-                          v-show="!nameEntry.isDefault"
-                          icon="pi pi-star"
-                          severity="warning"
-                          outlined
-                          size="small"
-                          @click="setDefaultLanguage(index)"
-                          title="Set as Default"
-                        />
-                        <Tag
-                          v-show="nameEntry.isDefault"
-                          value="Default"
-                          severity="warning"
-                          class="text-xs"
-                        />
-
-                        <Button
-                          v-show="form.name.length > 1"
-                          icon="pi pi-trash"
-                          severity="danger"
-                          outlined
-                          size="small"
-                          @click="removeLanguageEntry(index)"
-                          title="Remove Language"
-                        />
+                          <Button
+                            v-show="form.name.length > 1"
+                            icon="pi pi-trash"
+                            severity="danger"
+                            outlined
+                            size="small"
+                            @click="removeLanguageEntry(index)"
+                            title="Remove Language"
+                          />
+                        </div>
                       </div>
                     </div>
                   </template>
@@ -228,7 +228,7 @@ const submitButtonLabel = computed(() =>
 );
 
 // Language options
-const languageOptions = [
+const languageOptions: Array<{ label: string; value: "EN" | "KO" | "JA" }> = [
   { label: "English", value: "EN" },
   { label: "Korean", value: "KO" },
   { label: "Japanese", value: "JA" },
