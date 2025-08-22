@@ -9,21 +9,93 @@
     ]
   },
   {
-    "id": "WITCHER3",
-    "category": "RPG",
+    "id": "LOSTARK",
+    "category": "MMORPG",
     "name": [
-      { "language": "EN", "value": "The Witcher 3: Wild Hunt" },
-      { "language": "KO", "value": "더 위처 3: 와일드 헌트" },
-      { "language": "JA", "value": "ウィッチャー3 ワイルドハント" }
+      { "language": "EN", "value": "Lost Ark" },
+      { "language": "KO", "value": "로스트아크" },
+      { "language": "JA", "value": "ロストアーク" }
     ]
   },
   {
-    "id": "OVERWATCH2",
-    "category": "SHOOTER",
+    "id": "EPICSEVEN",
+    "category": "RPG",
     "name": [
-      { "language": "EN", "value": "Overwatch 2" },
-      { "language": "KO", "value": "오버워치 2" },
-      { "language": "JA", "value": "オーバーウォッチ 2" }
+      { "language": "EN", "value": "Epic Seven" },
+      { "language": "KO", "value": "에픽세븐" },
+      { "language": "JA", "value": "エピックセブン" }
+    ]
+  },
+  {
+    "id": "CROSSFIRE",
+    "category": "FPS",
+    "name": [
+      { "language": "EN", "value": "Crossfire" },
+      { "language": "KO", "value": "크로스파이어" },
+      { "language": "JA", "value": "クロスファイア" }
+    ]
+  },
+  {
+    "id": "TALESRUNNER",
+    "category": "RACING",
+    "name": [
+      { "language": "EN", "value": "Tales Runner" },
+      { "language": "KO", "value": "테일즈런너" },
+      { "language": "JA", "value": "テイルズランナー" }
+    ]
+  },
+  {
+    "id": "SOULWORKER",
+    "category": "ACTION",
+    "name": [
+      { "language": "EN", "value": "Soulworker" },
+      { "language": "KO", "value": "소울워커" },
+      { "language": "JA", "value": "ソウルワーカー" }
+    ]
+  },
+  {
+    "id": "SKUL",
+    "category": "ROGUELITE",
+    "name": [
+      { "language": "EN", "value": "Skul: The Hero Slayer" },
+      { "language": "KO", "value": "스컬: 더 히어로 슬레이어" },
+      { "language": "JA", "value": "Skul: The Hero Slayer" }
+    ]
+  },
+  {
+    "id": "GUILTYGEARSTRIVE",
+    "category": "FIGHTING",
+    "name": [
+      { "language": "EN", "value": "Guilty Gear -Strive-" },
+      { "language": "KO", "value": "길티기어 -스트라이브-" },
+      { "language": "JA", "value": "ギルティギア −ストライヴ−" }
+    ]
+  },
+  {
+    "id": "LOBOTOMYCORP",
+    "category": "SIMULATION",
+    "name": [
+      { "language": "EN", "value": "Lobotomy Corporation" },
+      { "language": "KO", "value": "로보토미 코퍼레이션" },
+      { "language": "JA", "value": "ロボトミーコーポレーション" }
+    ]
+  },
+  {
+    "id": "DJMAXRESPECTV",
+    "category": "RHYTHM",
+    "name": [
+      { "language": "EN", "value": "DJMAX RESPECT V" },
+      { "language": "KO", "value": "디제이맥스 리스펙트 V" },
+      { "language": "JA", "value": "DJMAX RESPECT V" }
+    ]
+  },
+  {
+    "id": "LIBRARYOFRUINA",
+    "category": "STRATEGY",
+    "name": [
+      { "language": "EN", "value": "Library Of Ruina" },
+      { "language": "KO", "value": "라이브러리 오브 루이나" },
+      { "language": "JA", "value": "ライブラリー・オブ・ルイナ" }
     ]
   }
 ]

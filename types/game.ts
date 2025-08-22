@@ -7,13 +7,16 @@ export interface Game {
   category:
     | "ACTION"
     | "ADVENTURE"
-    | "RPG"
-    | "STRATEGY"
+    | "FIGHTING"
+    | "FPS"
     | "PUZZLE"
-    | "SPORTS"
-    | "SHOOTER"
+    | "RYTHM"
+    | "RPG"
     | "RACING"
-    | "FIGHTING";
+    | "ROUGELITE"
+    | "SIMULATION"
+    | "STRATEGY"
+    | "SPORTS";
   name: GameName[];
 }
 export interface GameCreateRequest {

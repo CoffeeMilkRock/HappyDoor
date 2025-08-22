@@ -194,9 +194,10 @@ import { ref, computed, onMounted, watch } from "vue";
 import { useRoute } from "vue-router";
 import { useNuxtApp } from "#app";
 import type { Game, GameName } from "~/types/game";
+import { useToast } from "primevue/usetoast";
 
 const route = useRoute();
-const { $toast } = useNuxtApp();
+const toast = useToast();
 
 // Form data
 const form = ref({
@@ -234,14 +235,19 @@ const languageOptions = [
 ];
 
 const categoryOptions = [
+  { label: "All Categories", value: null },
+  { label: "Action", value: "ACTION" },
   { label: "Adventure", value: "ADVENTURE" },
+  { label: "Fighting", value: "FIGHTING" },
+  { label: "FPS", value: "FPS" },
+  { label: "Puzzle", value: "PUZZLE" },
   { label: "RPG", value: "RPG" },
-  { label: "Shooter", value: "SHOOTER" },
+  { label: "Racing", value: "RACING" },
+  { label: "Rhythm", value: "RYTHM" },
+  { label: "Rougelite", value: "ROUGELITE" },
+  { label: "Simulation", value: "SIMULATION" },
   { label: "Strategy", value: "STRATEGY" },
   { label: "Sports", value: "SPORTS" },
-  { label: "Racing", value: "RACING" },
-  { label: "Puzzle", value: "PUZZLE" },
-  { label: "Action", value: "ACTION" },
 ];
 
 // Available languages (not yet added)
@@ -285,7 +291,7 @@ const loadGameForEdit = async () => {
     }));
   } catch (error) {
     console.error("Error loading game:", error);
-    $toast.add({
+    toast.add({
       severity: "error",
       summary: "Error",
       detail: "Failed to load game data",
@@ -447,7 +453,7 @@ const submitForm = async () => {
       throw new Error(result.message || "Failed to save game");
     }
 
-    $toast.add({
+    toast.add({
       severity: "success",
       summary: "Success",
       detail: isEditMode.value
@@ -459,7 +465,7 @@ const submitForm = async () => {
     navigateBack();
   } catch (error: any) {
     console.error("Error submitting form:", error);
-    $toast.add({
+    toast.add({
       severity: "error",
       summary: "Error",
       detail:

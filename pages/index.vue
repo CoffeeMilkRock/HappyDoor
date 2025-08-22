@@ -153,8 +153,10 @@
 import { row } from "@primeuix/themes/aura/datatable";
 import { ref, computed, onMounted } from "vue";
 import type { Game } from "~/types/game";
-
-const { $toast, $confirm } = useNuxtApp();
+import { useToast } from "primevue/usetoast";
+import { useConfirm } from "primevue/useconfirm";
+const toast = useToast();
+const confirm = useConfirm();
 
 const games = ref<Game[]>([]);
 const selectedGames = ref<Game[]>([]);
@@ -177,12 +179,15 @@ const categoriesOptions = [
   { label: "Action", value: "ACTION" },
   { label: "Adventure", value: "ADVENTURE" },
   { label: "Fighting", value: "FIGHTING" },
+  { label: "FPS", value: "FPS" },
   { label: "Puzzle", value: "PUZZLE" },
   { label: "RPG", value: "RPG" },
   { label: "Racing", value: "RACING" },
-  { label: "Shooter", value: "SHOOTER" },
-  { label: "Sports", value: "SPORTS" },
+  { label: "Rhythm", value: "RYTHM" },
+  { label: "Rougelite", value: "ROUGELITE" },
+  { label: "Simulation", value: "SIMULATION" },
   { label: "Strategy", value: "STRATEGY" },
+  { label: "Sports", value: "SPORTS" },
 ];
 const navigateToRegister = () => {
   navigateTo("/register");
@@ -224,7 +229,7 @@ const loadGames = async () => {
     totalRecords.value = data.total;
   } catch (error) {
     console.error("Error loading games:", error);
-    $toast.add({
+    toast.add({
       severity: "error",
       summary: "Error",
       detail: "Failed to load games",
@@ -249,7 +254,7 @@ const editGame = (game: Game) => {
 };
 
 const confirmDelete = (game: Game) => {
-  $confirm.require({
+  confirm.require({
     message: `Are you sure you want to delete "${
       game.name[0]?.value || game.id
     }"?`,
@@ -276,7 +281,7 @@ const deleteGame = async (gameId: string) => {
       throw new Error("Failed to delete game");
     }
 
-    $toast.add({
+    toast.add({
       severity: "success",
       summary: "Success",
       detail: "Game deleted successfully",
@@ -286,7 +291,7 @@ const deleteGame = async (gameId: string) => {
     selectedGames.value = selectedGames.value.filter((g) => g.id !== gameId);
   } catch (error) {
     console.error("Error deleting game:", error);
-    $toast.add({
+    toast.add({
       severity: "error",
       summary: "Error",
       detail: "Failed to delete game",
@@ -297,7 +302,7 @@ const deleteGame = async (gameId: string) => {
 
 const confirmBulkDelete = () => {
   const count = selectedGames.value.length;
-  $confirm.require({
+  confirm.require({
     message: `Are you sure you want to delete ${count} selected game${
       count > 1 ? "s" : ""
     }?`,
@@ -334,7 +339,7 @@ const bulkDeleteGames = async () => {
       throw new Error(data.message || "Failed to delete games");
     }
 
-    $toast.add({
+    toast.add({
       severity: "success",
       summary: "Success",
       detail: data.message,
@@ -345,7 +350,7 @@ const bulkDeleteGames = async () => {
     await loadGames();
   } catch (error) {
     console.error("Error bulk deleting games:", error);
-    $toast.add({
+    toast.add({
       severity: "error",
       summary: "Error",
       detail: "Failed to delete selected games",
@@ -362,7 +367,7 @@ const getCategoryTagSeverity = (category: string) => {
       return "info";
     case "RPG":
       return "success";
-    case "SHOOTER":
+    case "FPS":
       return "danger";
     case "STRATEGY":
       return "warning";
