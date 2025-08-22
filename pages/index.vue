@@ -7,6 +7,7 @@
       </div>
       <div class="flex gap-2 max-[640px]:flex-col max-[640px]:items-start">
         <Button
+          class="text-white bg-red-500 border-red-500 cursor-pointer"
           icon="pi pi-trash"
           :label="deleteButtonLabel"
           @click="confirmBulkDelete"
@@ -14,8 +15,9 @@
           :disabled="!hasSelectedGames"
         />
         <Button
+          class="text-white"
           icon="pi pi-plus"
-          label="Register New Game"
+          label="Add New Game"
           @click="navigateToRegister"
         />
       </div>
@@ -209,7 +211,7 @@ const categoriesOptions = [
   { label: "Puzzle", value: "PUZZLE" },
   { label: "RPG", value: "RPG" },
   { label: "Racing", value: "RACING" },
-  { label: "Rhythm", value: "RYTHM" },
+  { label: "Rhythm", value: "RHYTHM" },
   { label: "Rougelite", value: "ROUGELITE" },
   { label: "Simulation", value: "SIMULATION" },
   { label: "Strategy", value: "STRATEGY" },
@@ -402,22 +404,28 @@ const getCategoryTagSeverity = (category: string) => {
   switch (category) {
     case "ADVENTURE":
       return "info";
-    case "RPG":
+    case "RYTHM":
       return "success";
     case "FPS":
       return "danger";
     case "STRATEGY":
       return "warning";
+    case "SIMULATION":
+      return "primary";
     case "SPORTS":
       return "help";
     case "RACING":
       return "secondary";
-    case "PUZZLE":
+    case "RYTHM":
       return "contrast";
     case "ACTION":
       return "danger";
+    case "FIGHTING":
+      return "danger";
+    case "RHYTHM":
+      return "info";
     default:
-      return "secondary";
+      return "primary";
   }
 };
 const getFilteredNames = (

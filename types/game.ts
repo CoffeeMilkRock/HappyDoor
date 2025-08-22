@@ -10,7 +10,7 @@ export interface Game {
     | "FIGHTING"
     | "FPS"
     | "PUZZLE"
-    | "RYTHM"
+    | "RHYTHM"
     | "RPG"
     | "RACING"
     | "ROUGELITE"

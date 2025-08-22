@@ -1,6 +1,6 @@
 <template>
-  <div class="max-[640px]:mx-0 bg-gray-50">
-    <header class="bg-white shadow-sm border-b">
+  <div class="max-[640px]:mx-0 bg-gray-50 relative">
+    <header class="bg-white shadow-sm border-b sticky top-0 z-10">
       <div class="mx-auto px-4 max-[640px]:px-3 px-6">
         <div
           class="flex justify-between max-[640px]:justify-around items-center h-16"
@@ -8,9 +8,9 @@
           <div class="flex items-center">
             <NuxtLink
               to="/"
-              class="max-[640px]:text-md text-xl decoration-none font-bold text-dark-600 transition-colors"
+              class="max-[640px]:text-md text-xl ml-10 decoration-none font-bold text-orange-600 transition-colors"
             >
-              GameManager
+              HappyDoor
             </NuxtLink>
           </div>
           <nav class="max-[640px]:text-sm flex space-x-4">
