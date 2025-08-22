@@ -10,10 +10,10 @@
           title="Back to Game List"
         />
         <div>
-          <h2 class="text-2xl font-bold text-gray-900 mb-2">
+          <h2 class="text-2xl font-bold text-white mb-2">
             {{ pageTitle }}
           </h2>
-          <p class="text-gray-600">
+          <p class="text-white">
             {{ pageDescription }}
           </p>
         </div>
@@ -26,7 +26,7 @@
           <form @submit.prevent="submitForm" class="space-y-6">
             <!-- Game ID Section -->
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">
+              <label class="block text-sm font-medium text-white mb-2">
                 Game ID <span class="text-red-500">*</span>
               </label>
               <InputText
@@ -46,7 +46,7 @@
 
             <!-- Category Section -->
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">
+              <label class="block text-sm font-medium text-white mb-2">
                 Category <span class="text-red-500">*</span>
               </label>
               <Dropdown
@@ -68,7 +68,7 @@
             <div>
               <div class="flex justify-between items-center mb-4">
                 <div>
-                  <label class="block text-sm font-medium text-gray-700">
+                  <label class="block text-sm font-medium text-white">
                     Game Names <span class="text-red-500">*</span>
                   </label>
                   <small class="text-gray-500">

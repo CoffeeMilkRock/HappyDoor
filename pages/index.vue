@@ -1,11 +1,11 @@
 <template>
-  <div>
-    <div class="mb-6 flex justify-between items-center">
-      <div>
+  <div class="max-[640px]:p-0">
+    <div class="mb-3 flex justify-between items-center">
+      <div class="max-[640px]:hidden">
         <h2 class="text-2xl font-bold text-dark-800 mb-2">Game List</h2>
         <p class="text-gray-600">Manage your game collection</p>
       </div>
-      <div class="flex gap-3">
+      <div class="flex gap-2 max-[640px]:flex-col max-[640px]:items-start">
         <Button
           icon="pi pi-trash"
           :label="deleteButtonLabel"
@@ -20,7 +20,7 @@
         />
       </div>
     </div>
-    <Card class="mb-6">
+    <Card class="mb-6 flex">
       <template #content>
         <div class="flex flex-col md:flex-row gap-4">
           <div class="flex-1">
@@ -47,6 +47,18 @@
               show-clear
               class="w-full"
               @change="loadGames"
+            />
+          </div>
+          <div class="w-full md:w-48">
+            <label class="block text-sm font-medium text-gray-700 mb-2">
+              Display Language
+            </label>
+            <Dropdown
+              v-model="currentLanguage"
+              :options="languageOptions"
+              option-label="label"
+              option-value="value"
+              class="w-full"
             />
           </div>
         </div>
@@ -108,6 +120,14 @@
                   <span class="text-md font-600">{{
                     nameEntry.language == currentLanguage ? nameEntry.value : ""
                   }}</span>
+                </div>
+                <div
+                  v-if="
+                    getFilteredNames(data.name).length === 0 && currentLanguage
+                  "
+                  class="text-gray-400 text-sm italic"
+                >
+                  No {{ currentLanguage }} translation available
                 </div>
               </div>
             </template>
@@ -174,6 +194,12 @@ const deleteButtonLabel = computed(() => {
     ? `Delete (${selectedGames.value.length})`
     : "Delete";
 });
+const languageOptions = [
+  { label: "English", value: "EN" },
+  { label: "Korean", value: "KO" },
+  { label: "Japanese", value: "JA" },
+];
+
 const categoriesOptions = [
   { label: "All Categories", value: null },
   { label: "Action", value: "ACTION" },
@@ -360,7 +386,18 @@ const bulkDeleteGames = async () => {
     bulkDeleting.value = false;
   }
 };
-
+const getLanguageTagSeverity = (language: string) => {
+  switch (language) {
+    case "EN":
+      return "info";
+    case "KO":
+      return "success";
+    case "JA":
+      return "warning";
+    default:
+      return "secondary";
+  }
+};
 const getCategoryTagSeverity = (category: string) => {
   switch (category) {
     case "ADVENTURE":
@@ -383,7 +420,14 @@ const getCategoryTagSeverity = (category: string) => {
       return "secondary";
   }
 };
-
+const getFilteredNames = (
+  names: Array<{ language: string; value: string }>
+) => {
+  if (!currentLanguage.value) {
+    return "KO"; // Show all languages if none selected
+  }
+  return names.filter((name) => name.language === currentLanguage.value);
+};
 // Lifecycle
 onMounted(() => {
   loadGames();
